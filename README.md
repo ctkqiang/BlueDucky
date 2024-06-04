@@ -35,7 +35,7 @@ I've successfully run this on a Raspberry Pi 4 using the default Bluetooth modul
 ## Installation and Usage 🛠️
 
 ### Setup Instructions
-
+For Linux: 
 ```bash
 # update apt
 sudo apt-get update
@@ -64,6 +64,27 @@ git clone https://github.com/pentestfunctions/BlueDucky.git
 cd BlueDucky
 sudo hciconfig hci0 up
 python3 BlueDucky.py
+```
+
+for MacOs:
+
+```bash
+# Update Homebrew
+brew update
+
+# Install dependencies using Homebrew
+brew install bluez-tools bluez git gcc python3
+
+# Install pybluez from source
+git clone https://github.com/pybluez/pybluez.git
+cd pybluez
+sudo python3 setup.py install
+
+# Build bdaddr from the bluez source
+cd ~/
+git clone --depth=1 https://github.com/bluez/bluez.git
+gcc -o bdaddr ~/bluez/tools/bdaddr.c ~/bluez/src/oui.c -I ~/bluez -lbluetooth
+sudo cp bdaddr /usr/local/bin/
 ```
 
 alternatively,
