@@ -77,6 +77,9 @@ brew install bluez-tools bluez git gcc python3
 
 # Install pybluez from source
 git clone https://github.com/pybluez/pybluez.git
+xcode-select --install
+xcodebuild clean
+xcodebuild -project osx/LightAquaBlue/LightAquaBlue.xcodeproj -scheme LightAquaBlue -configuration Release build
 cd pybluez
 sudo python3 setup.py install
 
